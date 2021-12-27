@@ -27,4 +27,10 @@ for x in range(0, 1):
     print(Response.decode('UTF-8'))
 
 input("Press Enter to continue ...")
+message_in_bytes = s.recv(4)
+BUFFER_SIZE = int.from_bytes(message_in_bytes, "big")
+
+print(BUFFER_SIZE)
+Response = s.recv(BUFFER_SIZE)
+print(Response.decode('UTF-8'))
 s.close()
