@@ -30,8 +30,9 @@ def detect_button():
     global mode
     while True:
         button.wait_for_press()
-        mode = (mode + 1) % 3
+        mode = (mode + 1) % 7
         print(f'Button is pushed. Now mode = {mode}.')
+        sleep(0.2) # This delay is added for debouncing.
 
 
 # when button pressed, toggle LED at specified Hz.
@@ -39,3 +40,4 @@ worker1 = Thread(target=detect_button, args=())
 worker2 = Thread(target=flash_led, args=())
 worker1.start()
 worker2.start()
+
